@@ -33,9 +33,10 @@ pipeline {
           def result      = currentBuild.currentResult      // SUCCESS / FAILURE
           def jobName     = env.JOB_NAME
           def buildNumber = env.BUILD_NUMBER as int
-          def branch      = env.GIT_BRANCH ?: 'main'
+          def branch      = env.GIT_BRANCH ?: '-'
           def jobUrl      = env.BUILD_URL
           def logUrl      = "${env.BUILD_URL}consoleText"
+          def commitHash  = env.GIT_COMMIT ?: "unknown"
 
           // 시작/종료 시간
           def startTime = new Date(currentBuild.startTimeInMillis).format("yyyy-MM-dd HH:mm:ss", TimeZone.getTimeZone(env.TZ))
@@ -62,6 +63,7 @@ pipeline {
             buildNumber : buildNumber,
             result      : result,
             branch      : branch,
+            commitHash  : commitHash,
             startedBy   : startedBy,
             jobUrl      : jobUrl,
             logUrl      : logUrl,

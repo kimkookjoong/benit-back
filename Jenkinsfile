@@ -51,12 +51,10 @@ pipeline {
           //def buildLog = logLines.join("\n")
 
           // Jenkins 전체 로그 중 마지막 10000줄 가져오기
-          def allLines = currentBuild.rawBuild.getLog(10000)    // List<String>
-
-          // 마지막 100줄만 추출 (100줄보다 적으면 전체 반환)
-          def lastLines = allLines.size() > 100
-              ? allLines.subList(allLines.size() - 100, allLines.size())
-              : allLines
+          def allLines = currentBuild.rawBuild.getLog(10000)   // 최대 10000줄
+          def buildLog = allLines.size() > 100
+              ? allLines.subList(allLines.size() - 100, allLines.size()).join("\n")
+              : allLines.join("\n")
 
           // 문자열로 합치기
           def buildLog = lastLines.join("\n")

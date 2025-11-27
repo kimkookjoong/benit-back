@@ -52,6 +52,8 @@ pipeline {
 
           // Jenkins 전체 로그 중 마지막 10000줄 가져오기
           def allLines = currentBuild.rawBuild.getLog(10000)   // 최대 10000줄
+          echo "▶ 전체 로그 라인 수: ${allLines.size()}"
+
           def buildLog = allLines.size() > 100
               ? allLines.subList(allLines.size() - 100, allLines.size()).join("\n")
               : allLines.join("\n")

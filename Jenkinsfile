@@ -47,7 +47,7 @@ pipeline {
           // 🔥 트리거 타입 판별 (수동 / PR / 스케줄/SCM)
           def triggerType = detectTriggerType()
 
-          def logLines = currentBuild.rawBuild.getLog(10000)
+          def logLines = currentBuild.rawBuild.getLog(100)
           def buildLog = logLines.join("\n")
 
           def payload = [
@@ -61,7 +61,7 @@ pipeline {
             startTime   : startTime,
             endTime     : endTime,
             triggerType : triggerType,
-            //buildLog    : buildLog
+            buildLog    : buildLog
           ]
 
           def jsonText = JsonOutput.prettyPrint(JsonOutput.toJson(payload))

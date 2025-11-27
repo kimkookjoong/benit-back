@@ -56,9 +56,6 @@ pipeline {
               ? allLines.subList(allLines.size() - 100, allLines.size()).join("\n")
               : allLines.join("\n")
 
-          // 문자열로 합치기
-          def buildLog = lastLines.join("\n")
-
           def payload = [
             jobName     : jobName,
             buildNumber : buildNumber,

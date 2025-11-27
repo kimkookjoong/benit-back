@@ -51,7 +51,7 @@ pipeline {
           //def buildLog = logLines.join("\n")
 
           def fullLog = currentBuild.rawBuild.getLog()
-          def last100 = fullLog.takeRight(100)
+          def last100 = fullLog.padRight(100)
           def buildLog = last100.join("\n")
 
           def payload = [

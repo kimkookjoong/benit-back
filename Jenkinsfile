@@ -44,6 +44,7 @@ pipeline {
 
           // 실행자 (플러그인에서 주입)
           def startedBy = env.BUILD_USER_ID ?: env.BUILD_USER ?: "-"
+          def startedByEmail = env.BUILD_USER_EMAIL ?: "-"
 
           // 🔥 트리거 타입 판별 (수동 / PR / 스케줄/SCM)
           def triggerType = detectTriggerType()
@@ -70,7 +71,8 @@ pipeline {
             startTime   : startTime,
             endTime     : endTime,
             triggerType : triggerType,
-            buildLog    : buildLog
+            buildLog    : buildLog,
+            startedByEmail : startedByEmail
           ]
 
           def jsonText = JsonOutput.prettyPrint(JsonOutput.toJson(payload))

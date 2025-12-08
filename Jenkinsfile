@@ -60,19 +60,19 @@ pipeline {
 //               : allLines.join("\n")
 
           def payload = [
-            jobName     : jobName,          // job 이름
-            buildNumber : buildNumber,      // 빌드 번호
-            result      : result,           // 빌드 결과
-            branch      : branch,           // 브랜치 이름
-            commitHash  : commitHash,       // 커밋 해쉬
-            startedBy   : startedBy,        // 빌드 수행자
-            startTime   : startTime,        // 빌드 시작 시간
-            endTime     : endTime,          // 빌드 종료 시간
-            triggerType : triggerType,      // 빌드 트리거 타입
-            buildLog    : buildLog,         // 빌드 상세 로그
-            startedByEmail : startedByEmail // 빌드 수행자 이메일
-            jobUrl      : jobUrl,
-            logUrl      : logUrl,
+            jobName     : jobName            // job 이름
+            ,buildNumber : buildNumber       // 빌드 번호
+            ,result      : result            // 빌드 결과
+            ,branch      : branch            // 브랜치 이름
+            ,commitHash  : commitHash        // 커밋 해쉬
+            ,startedBy   : startedBy         // 빌드 수행자
+            ,startTime   : startTime         // 빌드 시작 시간
+            ,endTime     : endTime           // 빌드 종료 시간
+            ,triggerType : triggerType       // 빌드 트리거 타입
+            ,buildLog    : buildLog          // 빌드 상세 로그
+            ,startedByEmail : startedByEmail // 빌드 수행자 이메일
+            ,jobUrl      : jobUrl
+            ,logUrl      : logUrl
           ]
 
           def jsonText = JsonOutput.prettyPrint(JsonOutput.toJson(payload))
@@ -120,4 +120,4 @@ String detectTriggerType() {
   }
 
   return type
-}
+} // 테스트
